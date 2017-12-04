@@ -1,6 +1,6 @@
 defmodule Part1 do
   def run() do
-    input = File.read!("input.txt") |> String.trim() |> String.graphemes()
+    input = File.read!("input.txt") |> String.trim |> String.graphemes
     solve(input ++ [hd(input)], 0)
   end
 
