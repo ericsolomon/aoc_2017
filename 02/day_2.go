@@ -11,6 +11,7 @@ func main() {
 	input := loadData()
 
 	fmt.Printf("Part 1: %d\n", partOneSolve(input))
+	fmt.Printf("Part 2: %d\n", partTwoSolve(input))
 }
 
 func partOneSolve(input [][]int) int {
@@ -20,13 +21,13 @@ func partOneSolve(input [][]int) int {
 		max := input[row][0]
 		min := input[row][0]
 
-		for index := 0; index < len(input[row]); index++ {
-			if input[row][index] > max {
-				max = input[row][index]
+		for item := range input[row] {
+			if input[row][item] > max {
+				max = input[row][item]
 			}
 
-			if input[row][index] < min {
-				min = input[row][index]
+			if input[row][item] < min {
+				min = input[row][item]
 			}
 		}
 
@@ -36,8 +37,20 @@ func partOneSolve(input [][]int) int {
 	return acc
 }
 
-func partTwoSolve() {
+func partTwoSolve(input [][]int) int {
+	acc := 0
 
+	for row := range input {
+		for x := 0; x < len(input[row]); x++ {
+			for y := 0; y < len(input[row]); y++ {
+				if input[row][x]%input[row][y] == 0 && input[row][x] != input[row][y] {
+					acc += (input[row][x] / input[row][y])
+				}
+			}
+		}
+	}
+
+	return acc
 }
 
 func loadData() [][]int {
