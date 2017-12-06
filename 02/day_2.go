@@ -21,13 +21,13 @@ func partOneSolve(input [][]int) int {
 		max := input[row][0]
 		min := input[row][0]
 
-		for item := range input[row] {
-			if input[row][item] > max {
-				max = input[row][item]
+		for _, item := range input[row] {
+			if item > max {
+				max = item
 			}
 
-			if input[row][item] < min {
-				min = input[row][item]
+			if item < min {
+				min = item
 			}
 		}
 
