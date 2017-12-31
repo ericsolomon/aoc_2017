@@ -1,9 +1,9 @@
 defmodule Day5 do
   def load_data do
     File.read!("input.txt")
-    |> String.trim
+    |> String.trim()
     |> String.split("\n")
-    |> Enum.map(&(String.to_integer(&1)))
+    |> Enum.map(&String.to_integer(&1))
   end
 
   # < 30 seconds
@@ -34,8 +34,14 @@ defmodule Day5 do
         acc
       else
         new_index = index + Enum.at(list, index)
-        solve(List.update_at(list, index, &(&1 + if new_index - index >= 3, do: -1, else: 1)), len, new_index, acc + 1)
+
+        solve(
+          List.update_at(list, index, &(&1 + if(new_index - index >= 3, do: -1, else: 1))),
+          len,
+          new_index,
+          acc + 1
+        )
       end
-    end 
+    end
   end
 end
